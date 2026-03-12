@@ -1,0 +1,19 @@
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+<IfModule mod_php5.c>
+    php_flag display_errors on
+    php_value error_reporting E_ALL
+</IfModule>
+
+<IfModule mod_php7.c>
+    php_flag display_errors on
+    php_value error_reporting E_ALL
+</IfModule>
+
+# Allow access to these files
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Test</title>
+</head>
+<body>
+    <h1>AJAX Test</h1>
+    
+    <button onclick="testGetProspect()">Test Get Prospect</button>
+    <div id="result"></div>
+    
+    <script>
+    function testGetProspect() {
+        // Use a known prospect ID from your database
+        const prospectId = prompt("Enter prospect ID:");
+        if (!prospectId) return;
+        
+        fetch('ajax/get_prospect.php?id=' + prospectId, {
+            credentials: 'same-origin'
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result').innerHTML = 
+                '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        })
+        .catch(error => {
+            document.getElementById('result').innerHTML = 'Error: ' + error;
+        });
+    }
+    </script>
+</body>
+</html>
